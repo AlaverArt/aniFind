@@ -1,0 +1,77 @@
+body{
+    font-family: "Segoe UI Semibold";
+    background-color: #121212;
+    color:#ff5c57;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    background-color: #343a40;
+    padding: 0 30px;
+    border-bottom: 4px #ff5c57 solid;
+}
+
+.header__wrapper{
+    max-width: 1200px;
+    width:80vw;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+}
+
+.main__wrapper{
+    max-width: 1200px;
+    width:80vw;
+}
+
+@media (max-width: 800px){
+    .main__wrapper{
+        max-width: 100vw;
+        width:100%;
+    }
+    body{
+        background-color: aqua;
+    }
+}
+
+.header__title{
+    flex-grow: 1;
+    font-size:2rem
+}
+.find{
+    max-width: 60%;
+    min-width: 30%;
+    justify-content: end;
+    display: flex;
+    flex-grow: 1;
+}
+.find__input{
+    margin: 0 15px 0 0;
+    max-width: 70%;
+    padding: 0 10px;
+    background-color: #2a2e31;
+    color:#e0dfdc;
+}
+
+.find__button{
+    background-color: #ff5c57;
+    color: white;
+    padding:5px;
+    border-radius: 5px;
+}
+
+.content{
+    background-color: #343a40;
+    min-height: 90vh;
+    width: 100%;
+}
