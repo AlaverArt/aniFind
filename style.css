@@ -39,9 +39,6 @@ body{
         max-width: 100vw;
         width:100%;
     }
-    body{
-        background-color: aqua;
-    }
 }
 
 .header__title{
