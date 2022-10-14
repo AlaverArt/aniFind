@@ -1,7 +1,7 @@
 import api from './api.js';
 import Card from './card.js';
 
-async function findAnime(name, contentPlace){
+document.addEventListener('DOMContentLoaded', async function findAnime(name, contentPlace = document.querySelector('.content')){
     try {
         const animeList = await api.getAnimes(name);
 
@@ -13,7 +13,7 @@ async function findAnime(name, contentPlace){
     } catch(e) {
         console.error(e);
     }
-}
+})
 
 const findBtn = document.querySelector('.find__button');
 const findInput = document.querySelector('.find__input');

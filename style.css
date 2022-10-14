@@ -83,15 +83,48 @@ body{
     }
 }
 .card{
-    width: fit-content;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     box-shadow: 5px 5px 20px black;
     padding: 10px;
 }
+
+.card__image-wrapper{
+    position: relative;
+    max-height: 100%;
+}
+
 .card__image {
     
 }
 
-.card__span{
-    
+.card__title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.card__desc {
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 10px 10px 10px;
+    height: 100%;
+    width: 100%;
+    color: #e0dfdc;
+    background: black;
+    opacity: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    transition: 0.5s;
+}
+
+.card:hover .card__desc {
+    z-index: 10;
+    opacity: 0.8;
 }
