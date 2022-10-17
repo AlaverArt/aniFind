@@ -1,5 +1,5 @@
 body{
-    font-family: "Segoe UI Semibold";
+    font-family: Arial, Helvetica, sans-serif;/*"Segoe UI Semibold";*/
     background-color: #121212;
     color:#ff5c57;
 }
@@ -32,6 +32,9 @@ body{
 .main__wrapper{
     max-width: 1200px;
     width:80vw;
+    padding: 30px 20px 20px 20px;
+    background-color: #343a40;
+    min-height: 90vh;
 }
 
 @media (max-width: 800px){
@@ -45,6 +48,10 @@ body{
     flex-grow: 1;
     font-size:2rem
 }
+.header__title a{
+    color: inherit;
+}
+
 .find{
     max-width: 60%;
     min-width: 30%;
@@ -58,6 +65,7 @@ body{
     padding: 0 10px;
     background-color: #2a2e31;
     color:#e0dfdc;
+    border-radius: 5px;
 }
 
 .find__button{
@@ -67,10 +75,7 @@ body{
     border-radius: 5px;
 }
 
-.content{
-    padding: 30px 20px 20px 20px;
-    background-color: #343a40;
-    min-height: 90vh;
+.anime-list{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -78,25 +83,28 @@ body{
 }
 
 @media (max-width: 800px){
-    .content{
+    .anime-list{
         grid-template-columns: 1fr 1fr;
     }
 }
 .card{
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
     box-shadow: 5px 5px 20px black;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .card__image-wrapper{
     position: relative;
+    width: fit-content;
     max-height: 100%;
 }
 
 .card__image {
-    
+    border-radius: 10px;
 }
 
 .card__title{
@@ -105,6 +113,11 @@ body{
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    padding: 10px 0 0 0;
+}
+
+.card__title a {
+    color: #ff5c57;
 }
 
 .card__desc {
@@ -122,9 +135,47 @@ body{
     text-overflow: ellipsis;
     text-align: justify;
     transition: 0.5s;
+    border-radius: 10px;
 }
 
 .card:hover .card__desc {
     z-index: 10;
     opacity: 0.8;
+}
+
+.anime-view-content {
+    width: 100%;
+}
+
+.anime-desc {
+    width: 100%;
+}
+
+.anime-desc__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.anime-desc__poster {
+    flex-grow: 0;
+    min-width: 30%;
+    max-width: 40%;
+    box-shadow: 10px 10px 20px black;
+}
+
+.anime-desc__title {
+    width: 50%;
+    padding: 30px 0 0 40px;
+}
+
+.anime-desc__title span {
+    font-size: 3rem;
+}
+
+.anime-desc__title hr {
+    display: block;
+    width: 100%;
+    background: linear-gradient(0.25turn,#c0c0c0, #343a40);
+    height: 3px;
 }

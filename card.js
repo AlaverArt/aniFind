@@ -1,11 +1,13 @@
-export default class Card{
+export default class Card {
     #title;
     #image;
     #description;
-    constructor(item){
+    #path
+    constructor(item, {name, index}){
         this.#title = item?.attributes?.titles?.en_jp ?? null;
         this.#image = item?.attributes?.posterImage?.small ?? null;
         this.#description = item?.attributes?.description ?? null;
+        this.#path = {name, index};
     }
 
     render(){
@@ -14,9 +16,9 @@ export default class Card{
         div.innerHTML = `
             <div class="card__image-wrapper">
                 <img class="card__image" src="${this.#image}">
-                <div class="card__desc">${this.#description || 'No description'}</div>
+                <div onclick="window.location = '#anime-view/${this.#path.name}/${this.#path.index}'" class="card__desc">${this.#description || 'No description'}</div>
             </div>
-            <div class="card__title">${this.#title}</div>
+            <div class="card__title"><a href='#anime-view/${this.#path.name}/${this.#path.index}'>${this.#title}</a></div>
         `;
         return div;
     }
