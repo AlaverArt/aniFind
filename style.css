@@ -2,9 +2,19 @@ body{
     font-family: Arial, Helvetica, sans-serif;/*"Segoe UI Semibold";*/
     background-color: #121212;
     color:#ff5c57;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .header{
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 1000;
+    top:0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +40,7 @@ body{
 }
 
 .main__wrapper{
-    max-width: 1200px;
+    max-width: 900px;
     width:80vw;
     padding: 30px 20px 20px 20px;
     background-color: #343a40;
@@ -149,6 +159,7 @@ body{
 
 .anime-desc {
     width: 100%;
+    padding: 0 50px;
 }
 
 .anime-desc__header {
@@ -160,7 +171,7 @@ body{
 .anime-desc__poster {
     flex-grow: 0;
     min-width: 30%;
-    max-width: 40%;
+    max-width: 50%;
     box-shadow: 10px 10px 20px black;
 }
 
@@ -178,4 +189,68 @@ body{
     width: 100%;
     background: linear-gradient(0.25turn,#c0c0c0, #343a40);
     height: 3px;
+}
+
+.anime-desc__title table {
+    font-size: 1.5rem;
+    margin: 20px 0 0 0;
+    color: #c0c0c0;
+    text-align: start;
+    margin-left: -20px;
+}
+
+.anime-desc__title table td{
+    margin: 0 0 0 10px;
+}
+
+.anime-desc__content {
+    margin: 50px 0 0 0;
+}
+
+.anime-desc__content p {
+    text-align: justify;
+    color:#c0c0c0;
+    text-indent: 3rem;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 800px){
+    .anime-desc__header {
+        flex-direction: column;
+    }
+
+    .anime-desc__title {
+        padding: 0;
+        text-align: center;
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .anime-desc__poster {
+        margin-top: 20px;
+        order: 2;
+        max-width: 100%;
+    }
+
+    .anime-desc__title hr {
+        display: none;
+    }
+    
+    .anime-desc {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .anime-desc__content p {
+        font-size: 1.25rem;
+    }
+
+    .anime-desc__title table {
+        font-size: 1.2rem;
+    }
+}
+
+.anime-desc__list {
+    list-style: none;
 }

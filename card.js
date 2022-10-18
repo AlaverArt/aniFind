@@ -4,10 +4,10 @@ export default class Card {
     #description;
     #path
     constructor(item, {name, index}){
-        this.#title = item?.attributes?.titles?.en_jp ?? null;
+        this.#title = item?.attributes?.titles?.en_jp ?? item?.attributes?.titles?.en_us ?? item?.attributes?.titles?.en ?? null;
         this.#image = item?.attributes?.posterImage?.small ?? null;
         this.#description = item?.attributes?.description ?? null;
-        this.#path = {name, index};
+        this.#path = {name: name.toLowerCase().replaceAll(' ', '-'), index};
     }
 
     render(){

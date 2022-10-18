@@ -6,20 +6,22 @@ const findBtn = document.querySelector('.find__button');
 const findInput = document.querySelector('.find__input');
 const contentDiv = document.querySelector('.main__wrapper');
 
-findBtn.addEventListener('click', () => findAnime(findInput.value, contentDiv));
+findBtn.addEventListener('click', () => findAnime(findInput?.value.toLowerCase().replace(' ', '-') || 'bleach', contentDiv));
 
 async function findAnime(name, contentDiv){
+    const animeName = name.toLowerCase().replaceAll(' ', '-') || 'bleach';
     const animeMap = store.getAnimeMap();
 
     try {
-        if(!animeMap.has(name))
+        document.body.style.backgroundImage = `url("https://gen.jut.su/chakranature/background_anime_${animeName}.dark.jpg")`;
+
+        if(!animeMap.has(animeName))
             await store.loadAnimeMapItem(name);
-        console.log(animeMap)
 
         const div = document.createElement('div');
         div.classList.add('anime-list')
 
-        animeMap.get(name).forEach((item, index) => {
+        animeMap.get(animeName).forEach((item, index) => {
             div.append((new Card(item, { name, index })).render())
         });
 
@@ -32,7 +34,8 @@ async function findAnime(name, contentDiv){
 
 export const homeView = {
     render() {
+        const animeName = findInput?.value.toLowerCase().replace(' ', '-') || 'bleach';
         console.log('home render');
-        findAnime(findInput.value || 'bleach', contentDiv);
+        findAnime(animeName, contentDiv);
     }
 }
