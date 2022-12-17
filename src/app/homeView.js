@@ -1,4 +1,3 @@
-import api from './api.js';
 import store from './store.js';
 import Card from './card.js';
 
@@ -7,6 +6,7 @@ const findInput = document.querySelector('.find__input');
 const contentDiv = document.querySelector('.main__wrapper');
 
 findBtn.addEventListener('click', () => findAnime(findInput?.value.toLowerCase().replace(' ', '-') || 'bleach', contentDiv));
+window.addEventListener('keydown', (e) => e.key === 'Enter' && document.activeElement === findInput && findAnime(findInput?.value.toLowerCase().replace(' ', '-') || 'bleach', contentDiv));
 
 async function findAnime(name, contentDiv){
     const animeName = name.toLowerCase().replaceAll(' ', '-') || 'bleach';

@@ -1,3 +1,5 @@
+import '../style/reset.css';
+import '../style/style.css';
 import router from './router.js';
 
 window.addEventListener('hashchange', () => router.render.bind(router)());
