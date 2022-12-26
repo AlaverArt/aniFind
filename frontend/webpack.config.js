@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Require  html-webpack-plugin plugin
 module.exports = {
+  mode: 'development',
   entry: __dirname + "/src/app/index.js", // webpack entry point. Module to start building dependency graph
   output: {
     path: __dirname + '/dist', // Folder to store generated bundle
@@ -19,7 +20,9 @@ module.exports = {
       })
   ],
   devServer: {  // configuration for webpack-dev-server
-      contentBase: './src/public',  //source of static assets
+      static: {
+        directory: __dirname + '/src/public',
+      },  //source of static assets
       port: 7700, // port to run dev-server
   } 
 };

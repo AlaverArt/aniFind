@@ -62,6 +62,13 @@ export default {
                 <div class='anime-desc__content'>
                     <p>${anime?.attributes?.description ?? ''}</p>
                 </div>
+                <div class='comment'>
+                    <div class='comment__new-comment'>
+                    </div>
+                    <div class='comment__posted-comments'>
+                        ${123}
+                    </div>
+                </div>
             </div>
         `
         contentDiv.innerHTML = '';
