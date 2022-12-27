@@ -23,6 +23,6 @@ module.exports = {
       static: {
         directory: __dirname + '/src/public',
       },  //source of static assets
-      port: 7700, // port to run dev-server
+      port: 8080, // port to run dev-server
   } 
 };

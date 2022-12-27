@@ -1,6 +1,11 @@
 import api from "./api.js";
 
 const animeMap = new Map();
+const commentsMap = new Map();
+
+function animeNameToKey(name) {
+    return name.toLowerCase().replaceAll(' ', '-') || 'bleach';
+}
 
 export default {
     getAnimeMap() {
@@ -9,7 +14,7 @@ export default {
 
     async loadAnimeMapItem(name) {
         let anime = (await api.getAnimes(name))?.data ?? null;
-        const animeName = name.toLowerCase().replaceAll(' ', '-') || 'bleach';
+        const animeName = animeNameToKey(name);
         const genres = new Map();
 
         await Promise.allSettled(
@@ -23,5 +28,18 @@ export default {
         })
 
         animeMap.set(animeName, anime);
+    },
+
+    getCommentsMap() {
+        return commentsMap;
+    },
+
+    async loadCommentsMapItem(animeId) {
+        const comments = await api.getAnimeItemComments(animeId);
+        commentsMap.set(animeId, comments);
+    },
+
+    postComment(animeId, comment) {
+        api.postComment(animeId, comment);
     }
 }

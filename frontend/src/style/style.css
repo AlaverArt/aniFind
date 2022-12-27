@@ -254,3 +254,71 @@ body{
 .anime-desc__list {
     list-style: none;
 }
+
+.comment {
+    padding-top: 2px;
+    /*background: radial-gradient(ellipse at top, black 0%, #343a40 70%);*/
+    /*border-top-style: linear-gradient(0.25turn,#c0c0c0, #343a40);*/
+}
+
+.comment > div {
+    background-color: #343a40;
+}
+
+.comment {
+    margin-top: 20px;
+}
+
+.comment__author {
+    display: flex;
+    padding-left: 5px;
+    font-size: 25px;
+}
+
+.comment__mark::before {
+    content: url('../public/star.svg');
+    padding-left: 5px;
+}
+
+.comment__content {
+    padding-left: 20px;
+    color: #c0c0c0;
+}
+
+.anime-desc__new-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.anime-desc__new-comment div {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+#new-comment-author-input {
+    margin: 10px 15px 0 0;
+    max-width: 200px;
+    padding: 0 10px;
+    background-color: #2a2e31;
+    color:#e0dfdc;
+    border-radius: 5px;
+}
+
+#new-comment-input {
+    margin: 20px 15px 0 0;
+    max-width: 70%;
+    padding: 0 10px;
+    background-color: #2a2e31;
+    color:#e0dfdc;
+    border-radius: 5px;
+}
+
+#new-comment-send-button {
+    align-self: start;
+    background-color: #ff5c57;
+    color: white;
+    padding:5px;
+    border-radius: 5px;
+    margin: 10px 0;;
+}

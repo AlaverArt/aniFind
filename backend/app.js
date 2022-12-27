@@ -1,23 +1,22 @@
 const express = require('express');
-var cors = require('cors');
-var corsOptions = {
-    origin: 'http://localhost',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
-const bodyParser = require('body-parser');
-
+let cors = require('cors');
+let corsOptions = {
+    origin: ['http://localhost:8080', 'http://localhost:3000'],
+    //optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 const models = require('./models');
 
 class Application {
     constructor() {
         this.expressApp = express();
         this.expressApp.use(cors(corsOptions));
+        this.expressApp.use(express.json());
         this.attachRoutes();
     }
 
     attachRoutes() {
         let app = this.expressApp;
-        let jsonParser = bodyParser.json();
+        //let jsonParser = bodyParser.json();
         this.commentsManager = new models.CommentsManager();
 
         app.get('/comments/:animeId', this.getCommentsHandler.bind(this));
@@ -36,12 +35,17 @@ class Application {
     }
 
     postCommentHandler(req, res) {
-        if(!this.req.params.animeId) {
+        const comment = req.body;
+        const id = req.params.animeId;
+        
+        if(!req.params.animeId) {
             res.status(400).json({});
         }
         else {
-            let response = { comment: this.commentsManager.postComment(req.params.animeId, req.body) };
-            res.json(response);
+            let result = this.commentsManager.postComment(id, comment);
+            let response = { comment: result};
+            res.set('Content-Type', 'application/json');
+            res.status(200).json(response);
         }
     }
 }

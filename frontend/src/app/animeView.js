@@ -1,12 +1,22 @@
 import store from "./store.js";
+import CommentsList from "./commentsList.js";
 
 const contentDiv = document.querySelector('.main__wrapper');
+let anime = {};
+
+window.sendComment = () => {
+    const commentAuthorInput = document.querySelector('#new-comment-author-input');
+    const commentInput = document.querySelector('#new-comment-input');
+    console.log(commentAuthorInput, commentInput);
+    store.postComment(anime?.id, { author: commentAuthorInput?.value, message: commentInput?.value });
+}
 
 export default {
     async render(){
         console.log('anime-view render');
 
         const animeMap = store.getAnimeMap();
+        const commentsMap = store.getCommentsMap();
 
         const animeInfo = location.hash.split('#')[1].split('/');
         const animeName = animeInfo[1];
@@ -14,8 +24,11 @@ export default {
 
         if(!animeMap.has(animeName))
             await store.loadAnimeMapItem(animeName);
-
-        const anime = animeMap.get(animeName)[animeIndex] ?? null;
+        anime = animeMap.get(animeName)[animeIndex] ?? null;
+        
+        if(!commentsMap.has(anime?.id))
+            await store.loadCommentsMapItem(anime?.id);
+        
         if(!anime) {
             contentDiv.innerHTML = 'Извините, такое аниме не найдено';
             return;
@@ -62,11 +75,15 @@ export default {
                 <div class='anime-desc__content'>
                     <p>${anime?.attributes?.description ?? ''}</p>
                 </div>
-                <div class='comment'>
-                    <div class='comment__new-comment'>
+                <div class='anime-desc__comment'>
+                    <div class='anime-desc__new-comment'>
+                        <div>Оставить отзыв</div>
+                        <input id='new-comment-author-input'>
+                        <textarea rows=3 id='new-comment-input'/></textarea>
+                        <button onclick="window.sendComment()" id='new-comment-send-button'>Отправить</button>
                     </div>
-                    <div class='comment__posted-comments'>
-                        ${123}
+                    <div class='anime-desc__posted-comments'>
+                        ${new CommentsList(commentsMap.get(anime?.id)?.comments).render().innerHTML}
                     </div>
                 </div>
             </div>

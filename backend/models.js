@@ -1,5 +1,5 @@
 const commentsStore = require('./commentsStore.json');
-
+const fs = require('fs');
 class Comment {
     id;
     author;
@@ -18,19 +18,24 @@ class CommentsManager {
     commentsMap;
 
     constructor() {
-        this.commentsMap = new Map(Object.entries(commentsStore.comments));
-        this.lastCommentId = commentsStore.commentCounter;
+        const map = fs.readFileSync('./commentsStore.json','utf-8');
+        this.commentsMap = JSON.parse(map.toString());
+        //this.lastCommentId = commentsStore.commentCounter;
     }
 
     getCommentsByAnimeId(animeId) {
-        if(!this.commentsMap.has(animeId)) return [];
-        return this.commentsMap.get(animeId);
+        if(!this.commentsMap.comments[animeId]) return [];
+        return this.commentsMap.comments[animeId];
     }
 
     postComment(animeId, comment) {
-        if(!this.commentsMap.has(animeId)) this.commentsMap.set(animeId) = [];
-        const newComment = new Comment({ id: ++this.lastCommentId, ...comment });
-        this.commentsMap.get(animeId).push(newComment);
+        if(!this.commentsMap.comments[animeId]) this.commentsMap.comments[animeId] = [];
+        const newComment = new Comment({ id: this.commentsMap.commentsCounter+1, ...comment });
+        this.commentsMap.commentsCounter += 1;
+        this.commentsMap.comments[animeId].push(newComment);
+
+        fs.writeFileSync('./commentsStore.json', JSON.stringify(this.commentsMap));
+
         return newComment;
     }
 }
