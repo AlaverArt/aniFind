@@ -1,6 +1,6 @@
 const freeAPIBaseURL = 'https://kitsu.io/api/edge/anime?filter[text]=';
 const freeAPIBaseGenreURL = 'https://kitsu.io/api/edge/anime/';
-const aniFindBackendURL = 'http://localhost:5000';
+const aniFindBackendURL = 'http://localhost:8080';
 
 export default {
     getAnimes: async (name) => /*await ((await fetch('./mock_data.json')).json()),*/await (await fetch(freeAPIBaseURL + name)).json(),

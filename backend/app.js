@@ -1,7 +1,7 @@
 const express = require('express');
 let cors = require('cors');
 let corsOptions = {
-    origin: ['http://localhost:8080', 'http://localhost:3000'],
+    origin: ['http://localhost:3300', 'http://localhost:3000'],
     //optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 const models = require('./models');
