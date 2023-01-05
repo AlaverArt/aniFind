@@ -8,8 +8,6 @@ COPY ./src /app/src
 COPY ./webpack.config.js .
 RUN npm run build
 
-CMD ["bash"]
-
 FROM nginx
 
 COPY --from=builder /app/dist/ /usr/share/nginx/html
