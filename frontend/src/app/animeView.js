@@ -4,11 +4,13 @@ import CommentsList from "./commentsList.js";
 const contentDiv = document.querySelector('.main__wrapper');
 let anime = {};
 
-window.sendComment = () => {
+window.sendComment = async () => {
     const commentAuthorInput = document.querySelector('#new-comment-author-input');
     const commentInput = document.querySelector('#new-comment-input');
     console.log(commentAuthorInput, commentInput);
-    store.postComment(anime?.id, { author: commentAuthorInput?.value, message: commentInput?.value });
+    await store.postComment(anime?.id, { author: commentAuthorInput?.value, message: commentInput?.value });
+    commentAuthorInput.value = '';
+    commentInput.value = '';
 }
 
 export default {
