@@ -1,5 +1,5 @@
 const express = require('express');
-let cors = require('cors');
+//let cors = require('cors');
 let corsOptions = {
     origin: ['http://localhost:3300', 'http://localhost:3000'],
     //optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -9,7 +9,7 @@ const models = require('./models');
 class Application {
     constructor() {
         this.expressApp = express();
-        this.expressApp.use(cors(corsOptions));
+        //this.expressApp.use(cors(corsOptions));
         this.expressApp.use(express.json());
         this.attachRoutes();
     }
