@@ -7,7 +7,7 @@ let anime = {};
 window.sendComment = async () => {
     const commentAuthorInput = document.querySelector('#new-comment-author-input');
     const commentInput = document.querySelector('#new-comment-input');
-    console.log(commentAuthorInput, commentInput);
+
     await store.postComment(anime?.id, { author: commentAuthorInput?.value, message: commentInput?.value });
     commentAuthorInput.value = '';
     commentInput.value = '';
